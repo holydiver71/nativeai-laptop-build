@@ -1,29 +1,39 @@
-Plan and Current Progress
-Hardware Transformation: Upgrading the Dell Precision 7520 to 48GB RAM is the primary goal to support high-reasoning models.  
+AI Workstation Project: "NativeAI"
+Target: Dell Precision 7520 (Pop!_OS)
+Objective: Subscription-free, 100% local AI-driven software development.
 
-Operating System: Pop!_OS is being utilized for its native NVIDIA and CUDA support.  
+1. Hardware State
+Current RAM: 16GB (2x8GB).  
 
-Memory Management: System swappiness is set to 10 to keep LLMs in physical RAM.  
+Pending Upgrade: 32GB (2x16GB) arriving to reach 48GB total.  
 
-Local LLM Status: Ollama is successfully hosting Qwen2.5-Coder, which will serve as the "brain" for autonomous coding tasks.
+GPU: Quadro M-series (NVIDIA/CUDA support active on Pop!_OS).  
 
-Terminal and Workspace Setup
-Ghostty & Zellij: These are configured to provide a multi-pane dashboard for code editing and AI monitoring.  
+Optimization: System swappiness set to 10 to prioritize physical memory for LLM weights.  
 
-Agentic Integration: Aider has been installed via pipx to avoid environment conflicts with Pop!_OS. It is configured to run in "Architect Mode" using the local Qwen model.
+2. Software Stack (Active)
+Inference Engine: Ollama (Local).  
 
-Next Steps (To-Do)
-[ ] Physical Upgrade: Install the 32GB (2 x 16GB) RAM kit once it arrives.
+Active Model: qwen2.5-coder:7b (Temporary until RAM upgrade).  
 
-[ ] Model Scaling: Once RAM is installed, pull and switch to qwen2.5-coder:32b for deeper reasoning.
+Agentic CLI: Aider (Installed via pipx for environment isolation).  
 
-[ ] Zellij Layout Automation: Finalize the ai.kdl layout to automatically launch Aider and a resource monitor (like btop) on startup.
+Terminal Environment: Ghostty (GPU accelerated) + Zellij (Session management).  
 
-[ ] IDE Sync: Ensure the Continue.dev VS Code extension is pointed to the newly pulled Qwen model for local autocomplete.  
+IDE Integration: VS Code + Continue.dev (Configured for local RAG and Autocomplete).  
 
-Quick Tip for your Next Step:
-Since you have Aider installed and Qwen ready, you can test the "Claude Code" experience right now by navigating to a project folder and running:
+3. Workflow Configuration
+Agent Mode: Aider is used in --architect mode to handle all coding tasks autonomously.  
 
-Bash
-aider --model ollama/qwen2.5-coder:7b --architect
-(Note: We are using the 7b version for now since your 32GB RAM kit hasn't arrived yet—the 32b model might be too sluggish on 16GB.)
+User Role: Purely supervisory; the LLM is the sole code generator.
+
+Local RAG: Prepared for codebase indexing via nomic-embed-text.  
+
+4. Pending Milestones (Chronological)
+[ ] RAM Installation: Physical upgrade to 48GB.
+
+[ ] Model Promotion: Replace 7b with qwen2.5-coder:32b or deepseek-coder-v2:16b.
+
+[ ] Terminal Automation: Finalize a Zellij .kdl layout that auto-starts Aider and btop monitoring.  
+
+[ ] Headless Orchestration: Configure scripts to manage Ollama context windows up to 32k for larger codebases.
