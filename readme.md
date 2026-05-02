@@ -1,17 +1,29 @@
-Your `Documents/nativeAI/readme.md` has been structured to serve as the definitive "source of truth" for your AI Native transformation[cite: 1].
+Plan and Current Progress
+Hardware Transformation: Upgrading the Dell Precision 7520 to 48GB RAM is the primary goal to support high-reasoning models.  
 
-### Plan and Current Progress
-*   **Hardware Transformation:** The plan focuses on upgrading the Dell Precision 7520 from 16GB to 48GB of RAM to enable local hosting of high-reasoning models[cite: 1].
-*   **Operating System:** Pop!_OS is being utilized for its native NVIDIA and CUDA support, essential for AI workloads[cite: 1].
-*   **Memory Management:** The system swappiness has been adjusted to `10` to prioritize keeping large LLMs in physical memory rather than swapping to disk[cite: 1].
+Operating System: Pop!_OS is being utilized for its native NVIDIA and CUDA support.  
 
-### Terminal and Workspace Setup
-*   **Ghostty:** You have installed this GPU-accelerated terminal emulator to handle high-speed AI text streaming with minimal latency[cite: 1].
-*   **Zellij:** A custom `ai-workstation` layout has been designed to provide a multi-pane dashboard including your code editor, local AI chat, and a GPU monitor[cite: 1].
-*   **Ollama:** This serves as the local inference engine, currently hosting `qwen2.5-coder:7b` for speed and prepared for the `32b` version once RAM is installed[cite: 1].
+Memory Management: System swappiness is set to 10 to keep LLMs in physical RAM.  
 
-### IDE Integration
-*   **Continue.dev:** VS Code has been configured to connect directly to your local Ollama instance, ensuring your coding assistance remains subscription-free[cite: 1].
-*   **Local RAG:** The system is prepared for codebase indexing using the `nomic-embed-text` model[cite: 1].
+Local LLM Status: Ollama is successfully hosting Qwen2.5-Coder, which will serve as the "brain" for autonomous coding tasks.
 
-For a full view of the implementation details, you can refer directly to the file: `Documents/nativeAI/readme.md`[cite: 1].
+Terminal and Workspace Setup
+Ghostty & Zellij: These are configured to provide a multi-pane dashboard for code editing and AI monitoring.  
+
+Agentic Integration: Aider has been installed via pipx to avoid environment conflicts with Pop!_OS. It is configured to run in "Architect Mode" using the local Qwen model.
+
+Next Steps (To-Do)
+[ ] Physical Upgrade: Install the 32GB (2 x 16GB) RAM kit once it arrives.
+
+[ ] Model Scaling: Once RAM is installed, pull and switch to qwen2.5-coder:32b for deeper reasoning.
+
+[ ] Zellij Layout Automation: Finalize the ai.kdl layout to automatically launch Aider and a resource monitor (like btop) on startup.
+
+[ ] IDE Sync: Ensure the Continue.dev VS Code extension is pointed to the newly pulled Qwen model for local autocomplete.  
+
+Quick Tip for your Next Step:
+Since you have Aider installed and Qwen ready, you can test the "Claude Code" experience right now by navigating to a project folder and running:
+
+Bash
+aider --model ollama/qwen2.5-coder:7b --architect
+(Note: We are using the 7b version for now since your 32GB RAM kit hasn't arrived yet—the 32b model might be too sluggish on 16GB.)
